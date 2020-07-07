@@ -253,7 +253,7 @@
 
                 // add contributios
                 data.features.forEach(feature => {
-                    let contribution = contributionData.find(c => c['CITY'] == feature.properties.Name);
+                    let contribution = contributionData.find(c => c['City'] == feature.properties.Name);
                     if(contribution) {
                         feature.properties = {...feature.properties, ...contribution}
                     }
