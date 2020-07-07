@@ -13,14 +13,11 @@ var layer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}'
    minZoom: 0
  });
 
- layer.addTo(map);
+//  layer.addTo(map);
 
- baseLayers ={
-    'Carto Dark':layer
- };
-
-// Load in geojson data
-var asthmaData = "data/london_data.geojson";
+//  baseLayers ={
+//     'Carto Dark':layer
+//  };
 
 var spainProvinces = L.geoJson(null, {
     style:function(feature) {
@@ -136,7 +133,7 @@ $.ajax({
 });
 
 function loadGeoData(contributionData) {
-    fetch('data/spain_provinces.geojson')
+    fetch('https://davincikab.github.io/funding_webmap/data/spain_provinces.geojson')
     .then(res => res.json())
     .then(data => {
 
