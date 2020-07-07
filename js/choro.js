@@ -34,7 +34,7 @@ var spainProvinces = L.geoJson(null, {
         // add popup
         let popupContent = "<div class='popup-content'>"+
                     "<h3 class='header'>"+feature.properties.Name+"</h3>"+
-                    "</div><p><strong>"+feature.properties['% RAISED']+"</strong> <br>Contribution </p>";
+                    "</div><p><strong>"+feature.properties["% Funded"]+"</strong> <br>Contribution </p>";
         layer.bindPopup(popupContent);
 
         // zoom to layer on click
@@ -50,7 +50,7 @@ var spainProvinces = L.geoJson(null, {
 });
 
 function styleProvince(feature) {
-    let amountRaised = feature.properties['% RAISED'];
+    let amountRaised = feature.properties["% Funded"];
     return amountRaised == '100%' ? 'green': amountRaised == '0%' ? 'red': 'beige';
 }
 
@@ -140,7 +140,7 @@ function loadGeoData(contributionData) {
 
         // add contributios
         data.features.forEach(feature => {
-            let contribution = contributionData.find(c => c['CITY'] == feature.properties.Name);
+            let contribution = contributionData.find(c => c["City"] == feature.properties.Name);
             if(contribution) {
                 feature.properties = {...feature.properties, ...contribution}
             }

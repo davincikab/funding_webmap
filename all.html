@@ -163,8 +163,8 @@
         });
 
         function styleProvince(feature) {
-            let amountRaised = feature.properties['% RAISED'];
-            return amountRaised == '100%' ? 'green': amountRaised == '0%' ? 'red': 'beige';
+            let amountRaised = feature.properties['% Funded'];
+            return amountRaised == '100%' ? 'green': amountRaised == "0%" ? 'red': 'beige';
         }
 
 
