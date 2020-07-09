@@ -89,6 +89,20 @@
     .leaflet-container {
         background-color: #fff;
     }
+
+    .leaflet-marker-icon.leaflet-div-icon {
+        background-color: transparent;
+        border: none;
+        margin-top: -10px !important;
+        margin-left: -8px !important;
+        width: 24px !important;
+        display: inline-flex;
+    }
+
+    .labels {
+        color:#474f56;
+        font-size: 0.6em;
+    }
 </style>
 <body>
     <div id="map">
@@ -283,6 +297,33 @@
         }
 
         map.addControl(legendControl);
+
+        // places names
+        var places = L.geoJson(null, {
+            style:function(feature){
+                return {
+
+                }
+            },
+            pointToLayer:function(geoObj, latlng) {
+                console.log(geoObj);
+                return L.marker(latlng, {
+                            icon:L.divIcon({
+                                html:'<small class="labels">'+geoObj.properties.Name+'</small>'
+                            })
+                        });
+            }
+
+        });
+
+        places.addTo(map);
+
+        // add 
+        fetch('data/places.geojson')
+            .then(res => res.json())
+            .then(data => {
+                places.addData(data);
+            });
     </script>
 </body>
 
