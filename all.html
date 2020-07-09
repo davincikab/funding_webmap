@@ -147,7 +147,7 @@
                 // add popup
                 let popupContent = "<div class='popup-content'>"+
                             "<h3 class='header'>"+feature.properties.Name+"</h3>"+
-                            "</div><p><strong>"+feature.properties['% Funded']+"</strong> <br>Contribution </p>";
+                            "</div><p><strong>"+feature.properties['% Funded']+"</strong> <br> 0% recaudado </p>";
                 layer.bindPopup(popupContent);
 
                 // zoom to layer on click
@@ -271,13 +271,13 @@
 
 
         // legend
-        var legendControl = new L.Control({position:'bottomleft'});
+        var legendControl = new L.Control({position:'bottomright'});
         legendControl.onAdd = function(map) {
             let div = L.DomUtil.create('div','legend');
 
-            div.innerHTML += '<div class="outer-box"><div class="box red"></div> <small>   No Funding</small></div>';
-            div.innerHTML += '<div class="outer-box"><div class="box beige"></div><small>  Partial Funding</small></div>';
-            div.innerHTML += '<div class="outer-box"><div class="box green"></div> <small>  Full Funding</small></div>';
+            div.innerHTML += '<div class="outer-box"><div class="box red"></div> <small>   Sin Apoyo</small></div>';
+            div.innerHTML += '<div class="outer-box"><div class="box beige"></div><small>  Apoyo Parcia</small></div>';
+            div.innerHTML += '<div class="outer-box"><div class="box green"></div> <small>  Apoyo Completo</small></div>';
 
             return div;
         }
