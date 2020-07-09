@@ -94,14 +94,15 @@
         background-color: transparent;
         border: none;
         margin-top: -10px !important;
-        margin-left: -8px !important;
+        margin-left: -10px !important;
         width: 24px !important;
         display: inline-flex;
     }
 
     .labels {
-        color:#474f56;
-        font-size: 0.6em;
+        color:#00000070;
+        font-size: 0.69em;
+        text-transform: uppercase;
     }
 </style>
 <body>
@@ -158,21 +159,24 @@
                 }
             },
             onEachFeature:function(feature, layer){
-                // add popup
-                let popupContent = "<div class='popup-content'>"+
-                            "<h3 class='header'>"+feature.properties.Name+"</h3>"+
-                            "</div><p><strong>"+feature.properties['% Funded']+"</strong> <br> 0% recaudado </p>";
-                layer.bindPopup(popupContent);
+                if (['Algeria', 'Morocco'].indexOf(feature.properties.Name) != -1){
 
-                // zoom to layer on click
-                layer.on('click', function(e) {
-                    console.log(e);
-                    let targetLayer = e.target;
-                    // map.fitBounds(targetLayer.getBounds());
+                } else {
+                    // add popup
+                    let popupContent = "<div class='popup-content'>"+
+                                "<h3 class='header'>"+feature.properties.Name+"</h3>"+
+                                "</div><p><strong>"+feature.properties['% Funded']+"</strong> <br> 0% recaudado </p>";
+                    layer.bindPopup(popupContent);
 
-                    map.flyTo(e.latlng, 7);
-                });
+                    // zoom to layer on click
+                    layer.on('click', function(e) {
+                        console.log(e);
+                        let targetLayer = e.target;
+                        // map.fitBounds(targetLayer.getBounds());
 
+                        map.flyTo(e.latlng, 7);
+                    });
+                }
             }
         });
 
@@ -277,6 +281,7 @@
                 console.log(data);
                 spainProvinces.addData(data);
                 map.fitBounds(spainProvinces.getBounds());
+                // map.setMaxBounds(spainProvinces.getBounds());
             })
             .catch(error => {
                 console.log(error);
