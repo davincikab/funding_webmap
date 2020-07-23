@@ -101,8 +101,12 @@
 
     .labels {
         color:#00000070;
-        font-size: 0.69em;
+        font-size: 0.7em;
+        font-style: italic;
         text-transform: uppercase;
+    }
+    .leaflet-bottom .leaflet-control {
+        margin-bottom: 42%;
     }
 </style>
 <body>
@@ -152,7 +156,7 @@
             style:function(feature) {
                 return {
                     fillColor:styleProvince(feature),
-                    fillOpacity:0.8,
+                    fillOpacity:0.7,
                     opacity:1,
                     weight:0.5,
                     color:'#dddd'
@@ -294,9 +298,9 @@
         legendControl.onAdd = function(map) {
             let div = L.DomUtil.create('div','legend');
 
-            div.innerHTML += '<div class="outer-box"><div class="box red"></div> <small>   Sin Apoyo</small></div>';
-            div.innerHTML += '<div class="outer-box"><div class="box beige"></div><small>  Apoyo Parcia</small></div>';
-            div.innerHTML += '<div class="outer-box"><div class="box green"></div> <small>  Apoyo Completo</small></div>';
+            div.innerHTML += '<div class="outer-box"><div class="box red"></div> <small>   Sin Apoyo/ Not Funded</small></div>';
+            div.innerHTML += '<div class="outer-box"><div class="box beige"></div><small>  Apoyo Parcial/ Partial Funding</small></div>';
+            div.innerHTML += '<div class="outer-box"><div class="box green"></div> <small> Apoyo Completo/ Funded></div>';
 
             return div;
         }
