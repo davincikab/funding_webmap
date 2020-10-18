@@ -186,7 +186,12 @@
 
         function styleProvince(feature) {
             let amountRaised = feature.properties['% Funded'];
-            return !amountRaised ? "#c1c1c1" :amountRaised == '100%' ? 'green': amountRaised == "0%" ? 'red': 'beige';
+            let layer = feature.properties.layer;
+            if(layer == "Africa") {
+                return "#c1c1c1";
+            }
+
+            return  amountRaised == '100%' ? 'green': amountRaised == "0%" ? 'red': 'beige';
         }
 
 
